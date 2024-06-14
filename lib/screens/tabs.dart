@@ -11,7 +11,7 @@ class _TabsState extends State<Tabs> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
+    const HomePage(),
     SearchScreen(),
     FavouritesScreen(),
     CartScreen(),
@@ -87,7 +87,7 @@ class _TabsState extends State<Tabs> {
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Search Page', style: TextStyle(fontSize: 24)),
     );
   }
@@ -96,7 +96,7 @@ class SearchScreen extends StatelessWidget {
 class FavouritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Notifications Page', style: TextStyle(fontSize: 24)),
     );
   }
@@ -105,7 +105,7 @@ class FavouritesScreen extends StatelessWidget {
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Messages Page', style: TextStyle(fontSize: 24)),
     );
   }
@@ -114,7 +114,7 @@ class CartScreen extends StatelessWidget {
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Profile Page', style: TextStyle(fontSize: 24)),
     );
   }
