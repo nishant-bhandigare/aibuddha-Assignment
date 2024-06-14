@@ -1,13 +1,17 @@
+import 'package:aibuddha_assignment/models/offer_model.dart';
 import 'package:flutter/material.dart';
 
 class OfferElement extends StatelessWidget {
-  const OfferElement({super.key});
+  const OfferElement({super.key, required this.offerItem});
+
+  final Offer offerItem;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 216,
       height: 294,
+      margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
       child: Column(
         children: [
           Container(
@@ -25,20 +29,20 @@ class OfferElement extends StatelessWidget {
                 topRight: Radius.circular(10.0),
               ),
               child: Image.asset(
-                "assets/images/offer_image.jpg",
+                offerItem.imagePath,
                 fit: BoxFit.cover,
+
               ),
             ),
           ),
-
           const SizedBox(height: 7),
-          Container(
+          SizedBox(
             width: 35,
             height: 23,
-            color: Colors.cyanAccent,
+            child: Image.asset(offerItem.brandLogo),
           ),
           const SizedBox(height: 7),
-          const Text("Min 30% Off", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          Text("Min ${offerItem.discount.toString()}% Off", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
         ],
       ),
     );

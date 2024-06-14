@@ -10,6 +10,9 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    const Color themeColour = Color.fromARGB(255, 34, 50, 99);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -35,7 +38,6 @@ class Product extends StatelessWidget {
                   height: 216,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.cyanAccent,
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
@@ -52,7 +54,6 @@ class Product extends StatelessWidget {
                       height: 103,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.cyanAccent,
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
@@ -68,8 +69,11 @@ class Product extends StatelessWidget {
                       height: 103,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.cyanAccent,
                         image: DecorationImage(
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black38,
+                            BlendMode.darken,
+                          ),
                           image: AssetImage(product.imagePaths[2]),
                           fit: BoxFit.cover,
                         ),
@@ -101,8 +105,9 @@ class Product extends StatelessWidget {
             Row(
               children: [
                 Text('Rs. ${product.oldPrice.toString()}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
+                      color: Colors.grey[500],
                       fontWeight: FontWeight.w400,
                       decoration: TextDecoration.lineThrough,
                     )),
@@ -126,7 +131,7 @@ class Product extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.43,
                   height: 38,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 1),
+                    border: Border.all(color: themeColour, width: 1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Row(
@@ -145,7 +150,7 @@ class Product extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.43,
                   height: 38,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 1),
+                    color: themeColour,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Row(
@@ -154,9 +159,10 @@ class Product extends StatelessWidget {
                     children: [
                       Text("Add to Cart",
                           style: TextStyle(
+                            color: Colors.white,
                               fontSize: 14, fontWeight: FontWeight.w400)),
                       SizedBox(width: 22),
-                      FaIcon(FontAwesomeIcons.bagShopping, size: 14),
+                      FaIcon(FontAwesomeIcons.bagShopping, size: 14, color: Colors.white),
                     ],
                   ),
                 ),

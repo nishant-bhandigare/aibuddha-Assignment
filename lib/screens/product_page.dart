@@ -7,7 +7,7 @@ import 'package:aibuddha_assignment/components/size_chart.dart';
 import 'package:aibuddha_assignment/data/products_data.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_indicator/carousel_indicator.dart'; // Import the carousel_indicator package
+import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:aibuddha_assignment/models/product_model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -47,7 +47,7 @@ class _ProductPageState extends State<ProductPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: 414,
               height: 570,
               child: CarouselSlider(
@@ -92,11 +92,8 @@ class _ProductPageState extends State<ProductPage> {
               children: [
                 CarouselIndicator(
                   count: widget.product.imagePaths.length,
-                  index: _pageIndex, // Use the updated page index
-                  // indicatorSize: 10.0,
-                  activeColor: Colors.blue, // Customize the active color if needed
-                  // inactiveColor: Colors.grey, // Customize the inactive color if needed
-                  // indicatorSpace: 10.0, // Customize the space between indicators
+                  index: _pageIndex,
+                  activeColor: Colors.blue,
                   space: 10.0,
                   color: Colors.grey,
                 ),
@@ -131,8 +128,9 @@ class _ProductPageState extends State<ProductPage> {
               child: Row(
                 children: [
                   Text('Rs. ${widget.product.oldPrice.toString()}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
+                        color: Colors.grey[500],
                         fontWeight: FontWeight.w400,
                         decoration: TextDecoration.lineThrough,
                       )),

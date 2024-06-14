@@ -11,9 +11,9 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Checkbox(
             value: _isChecked,
@@ -29,7 +29,7 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
           ),
           Text(
             "Remember Me",
-            style: TextStyle(color: Colors.grey[600]),
+            style: TextStyle(color: Colors.grey[500], fontSize: 14, fontWeight: FontWeight.w400),
           ),
         ],
       ),
