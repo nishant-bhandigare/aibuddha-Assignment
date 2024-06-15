@@ -8,6 +8,7 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
 - [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Dependencies](#dependencies)
+- [Acknowledgements](#acknowledgements)
 
 ## Features
 
@@ -17,26 +18,23 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
 - **FAQ Section**: Find answers to common questions with an expandable FAQ section.
 
 ## Screenshots
-
-<style>
-        img{
-            display: inline;
-        }
- </style>
     
 ### Login Screen
 <img src="assets/screenshots/AuthScreen.jpg" width="300">
 
 ### Home Screen
+<p>
 <img src="assets/screenshots/home1.jpg" width="300">
 <img src="assets/screenshots/home2.jpg" width="300">
 <img src="assets/screenshots/home3.jpg" width="300">
+</p>
 
 ### Product Details
+<p>
 <img src="assets/screenshots/product_details_1.jpg" width="300">
 <img src="assets/screenshots/product_details_2.jpg" width="300">
 <img src="assets/screenshots/product_details_3.jpg" width="300">
-
+</p>
 
 ## Installation
 
