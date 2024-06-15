@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Tabs extends StatefulWidget {
+  const Tabs({super.key});
+
   @override
   _TabsState createState() => _TabsState();
 }
@@ -12,10 +14,10 @@ class _TabsState extends State<Tabs> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    SearchScreen(),
-    FavouritesScreen(),
-    CartScreen(),
-    ProfileScreen(),
+    const SearchScreen(),
+    const FavouritesScreen(),
+    const CartScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -26,12 +28,15 @@ class _TabsState extends State<Tabs> {
 
   @override
   Widget build(BuildContext context) {
+
+    Color themeColour = const Color.fromARGB(255, 34, 50, 99);
+
     return Scaffold(
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: themeColour,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
@@ -85,6 +90,8 @@ class _TabsState extends State<Tabs> {
 }
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
@@ -94,24 +101,30 @@ class SearchScreen extends StatelessWidget {
 }
 
 class FavouritesScreen extends StatelessWidget {
+  const FavouritesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Notifications Page', style: TextStyle(fontSize: 24)),
+      child: Text('Your Favourites', style: TextStyle(fontSize: 24)),
     );
   }
 }
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Messages Page', style: TextStyle(fontSize: 24)),
+      child: Text('Your Cart', style: TextStyle(fontSize: 24)),
     );
   }
 }
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(

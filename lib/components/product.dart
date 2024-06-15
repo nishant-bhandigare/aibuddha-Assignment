@@ -10,7 +10,6 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     const Color themeColour = Color.fromARGB(255, 34, 50, 99);
 
     return GestureDetector(
@@ -112,15 +111,19 @@ class Product extends StatelessWidget {
                       decoration: TextDecoration.lineThrough,
                     )),
                 const SizedBox(width: 17),
-                Text('Rs. ${product.newPrice.toString()}',
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w400)),
+                Text(
+                  'Rs. ${product.newPrice.toString()}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w400),
+                ),
                 const SizedBox(width: 10),
-                Text('(${product.discount.toString()}% Off)',
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.green)),
+                Text(
+                  '(${product.discount.toString()}% Off)',
+                  style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.green),
+                ),
               ],
             ),
             const SizedBox(height: 15),
@@ -138,9 +141,11 @@ class Product extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Wishlist",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400)),
+                      Text(
+                        "Wishlist",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w400),
+                      ),
                       SizedBox(width: 22),
                       FaIcon(FontAwesomeIcons.heart, size: 14),
                     ],
@@ -157,12 +162,16 @@ class Product extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Add to Cart",
-                          style: TextStyle(
+                      Text(
+                        "Add to Cart",
+                        style: TextStyle(
                             color: Colors.white,
-                              fontSize: 14, fontWeight: FontWeight.w400)),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                      ),
                       SizedBox(width: 22),
-                      FaIcon(FontAwesomeIcons.bagShopping, size: 14, color: Colors.white),
+                      FaIcon(FontAwesomeIcons.bagShopping,
+                          size: 14, color: Colors.white),
                     ],
                   ),
                 ),

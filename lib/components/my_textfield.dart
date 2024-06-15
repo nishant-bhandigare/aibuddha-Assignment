@@ -5,34 +5,33 @@ class MyTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final IconData icon;
+  final Color borderColor;
 
   const MyTextField({
-    super.key,
+    Key? key,
     required this.controller,
     required this.hintText,
     required this.obscureText,
     required this.icon,
-  });
+    this.borderColor = Colors.grey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.grey[500]),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black12),
+          hintText: hintText,
+          prefixIcon: Icon(icon),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: borderColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+            borderSide: BorderSide(color: borderColor),
           ),
-          fillColor: Colors.white,
-          filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14, fontWeight: FontWeight.w400),
         ),
       ),
     );

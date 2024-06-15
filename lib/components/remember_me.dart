@@ -10,6 +10,9 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    Color themeColour = const Color.fromARGB(255, 34, 50, 99);
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -25,7 +28,7 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
             ),
-            activeColor: Colors.blue,
+            activeColor: themeColour,
           ),
           Text(
             "Remember Me",

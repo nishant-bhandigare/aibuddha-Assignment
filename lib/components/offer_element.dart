@@ -9,13 +9,13 @@ class OfferElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 216,
+      width: MediaQuery.of(context).size.width * 0.52,
       height: 294,
       margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
       child: Column(
         children: [
           Container(
-            width: 216,
+            width: MediaQuery.of(context).size.width * 0.52,
             height: 227,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -31,18 +31,20 @@ class OfferElement extends StatelessWidget {
               child: Image.asset(
                 offerItem.imagePath,
                 fit: BoxFit.cover,
-
               ),
             ),
           ),
           const SizedBox(height: 7),
           SizedBox(
-            width: 35,
+            width: MediaQuery.of(context).size.width * 0.085,
             height: 23,
             child: Image.asset(offerItem.brandLogo),
           ),
           const SizedBox(height: 7),
-          Text("Min ${offerItem.discount.toString()}% Off", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          Text(
+            "Min ${offerItem.discount.toString()}% Off",
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
         ],
       ),
     );

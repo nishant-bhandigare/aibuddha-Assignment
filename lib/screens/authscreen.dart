@@ -1,56 +1,45 @@
-import 'package:aibuddha_assignment/screens/home.dart';
+import 'package:aibuddha_assignment/screens/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:aibuddha_assignment/components/login_button.dart';
 import 'package:aibuddha_assignment/components/my_textfield.dart';
 import 'package:aibuddha_assignment/components/remember_me.dart';
 import 'package:aibuddha_assignment/components/square_tile.dart';
 
-class Authscreen extends StatelessWidget {
-  Authscreen({super.key});
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
 
-  // text editing controllers
-  final TextEditingController usernameController = TextEditingController();
+  @override
+  _AuthScreenState createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
+  final TextEditingController emailPasswordController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  bool showError = false;
 
   // Regular expression for validating email/phone number
   final RegExp emailPhoneRegex =
-      RegExp(r"(^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$)|(^[0-9]{10}$)");
+  RegExp(r"(^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$)|(^[0-9]{10}$)");
 
   // Regular expression for validating password
   final RegExp passwordRegex =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
-  // Sign user in method
   void signUserIn(BuildContext context) {
-    if (emailPhoneRegex.hasMatch(usernameController.text) &&
-        passwordRegex.hasMatch(passwordController.text)) {
-      // Navigate to Home Page if validation is successful
-      Navigator.of(context).pop();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-    } else {
-      // Show error message if validation fails
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("Invalid Input"),
-            content: const Text(
-                "Please enter a valid email/phone number and password."),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    }
+    setState(() {
+      if (emailPhoneRegex.hasMatch(emailPasswordController.text) &&
+          passwordRegex.hasMatch(passwordController.text)) {
+        showError = false;
+        Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Tabs()),
+        );
+      } else {
+        showError = true;
+      }
+    });
   }
 
   @override
@@ -72,6 +61,19 @@ class Authscreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: themeColour,
                   borderRadius: BorderRadius.circular(16),
+                ),
+                child: Center(
+                  child: Transform.rotate(
+                    angle: 45 * 3.1415926535897932 / 180,
+                    child: Container(
+                      width: 26,
+                      height: 26,
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 8, color: Colors.white),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                  ),
                 ),
               ),
 
@@ -96,11 +98,25 @@ class Authscreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 52),
+              if(!showError)
+                const SizedBox(height: 52),
+
+              if (showError)
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 16, 0, 18),
+                  child: const Text(
+                    'Incorrect Password!',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
 
               // username textfield
               MyTextField(
-                controller: usernameController,
+                controller: emailPasswordController,
                 hintText: 'Your Email / Phone Number',
                 obscureText: false,
                 icon: Icons.account_circle_outlined,
@@ -114,7 +130,9 @@ class Authscreen extends StatelessWidget {
                 hintText: 'Password',
                 obscureText: true,
                 icon: Icons.lock_outline,
+                borderColor: showError ? Colors.red : Colors.grey,
               ),
+
 
               const SizedBox(height: 10),
 
@@ -189,11 +207,11 @@ class Authscreen extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SquareTile(imagePath: 'assets/images/google.png'),
+                  SquareTile(imagePath: 'assets/icons/apple.png'),
                   SizedBox(width: 43),
-                  SquareTile(imagePath: 'assets/images/google.png'),
+                  SquareTile(imagePath: 'assets/icons/facebook.png'),
                   SizedBox(width: 43),
-                  SquareTile(imagePath: 'assets/images/apple.png')
+                  SquareTile(imagePath: 'assets/icons/google.png')
                 ],
               ),
 

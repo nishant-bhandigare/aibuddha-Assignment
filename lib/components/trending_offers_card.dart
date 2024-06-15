@@ -5,24 +5,26 @@ import 'package:flutter/material.dart';
 class TrendingOffersCard extends StatelessWidget{
   const TrendingOffersCard({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 337,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Trending Offers",
-              style:
-              TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text("Trending Offers",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
+                const SizedBox(width: 20),
                 ...offers.map((item) => OfferElement(offerItem: item,)),
               ],
             ),

@@ -2,17 +2,17 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class CarouselElement extends StatefulWidget {
-  const CarouselElement({super.key});
+class HomeCarousel extends StatefulWidget {
+  const HomeCarousel({super.key});
 
   @override
-  State<CarouselElement> createState() => _CarouselElementState();
+  State<HomeCarousel> createState() => _HomeCarouselState();
 }
 
-class _CarouselElementState extends State<CarouselElement> {
-  int _pageIndex = 0; // Add a variable to track the current page index
+class _HomeCarouselState extends State<HomeCarousel> {
+  int _pageIndex = 0;
   List myList = [1, 2, 3, 4, 5];
-  Color themeColour = Color.fromARGB(255, 34, 50, 99);
+  Color themeColour = const Color.fromARGB(255, 34, 50, 99);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _CarouselElementState extends State<CarouselElement> {
             height: 344.67,
             onPageChanged: (index, reason) {
               setState(() {
-                _pageIndex = index; // Update the current page index
+                _pageIndex = index;
               });
             },
           ),
@@ -32,7 +32,6 @@ class _CarouselElementState extends State<CarouselElement> {
               builder: (BuildContext context) {
                 return Container(
                   width: MediaQuery.of(context).size.width,
-                  // height: 344.67,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       colorFilter: ColorFilter.mode(
@@ -48,20 +47,26 @@ class _CarouselElementState extends State<CarouselElement> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("FOREVER 21",
-                          style: TextStyle(fontSize: 29, color: Colors.white)),
+                      const Text(
+                        "FOREVER 21",
+                        style: TextStyle(fontSize: 29, color: Colors.white, fontWeight: FontWeight.w700),
+                      ),
                       const SizedBox(height: 17),
-                      const Text("Big Fashion Festival",
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700)),
+                      const Text(
+                        "Big Fashion Festival",
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
+                      ),
                       const SizedBox(height: 17),
-                      const Text("70% - 80% Off",
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700)),
+                      const Text(
+                        "70% - 80% Off",
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
+                      ),
                       const SizedBox(height: 27),
                       Container(
                         width: 118,
@@ -71,8 +76,10 @@ class _CarouselElementState extends State<CarouselElement> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Center(
-                          child: Text("Explore",
-                              style: TextStyle(fontSize: 18, color: Colors.white)),
+                          child: Text(
+                            "Explore",
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          ),
                         ),
                       ),
                     ],
@@ -92,8 +99,9 @@ class _CarouselElementState extends State<CarouselElement> {
               CarouselIndicator(
                 count: myList.length,
                 index: _pageIndex,
+                height: 4,
                 activeColor: themeColour,
-                space: 10.0,
+                space: 6.0,
                 color: Colors.grey,
               ),
             ],

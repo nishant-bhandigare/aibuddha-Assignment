@@ -8,24 +8,21 @@ class ProfileHeader extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 50,
-      decoration: const BoxDecoration(
-        // border: Border.all(),
-      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: CircleAvatar(
-              radius: 17.5,
-              backgroundImage: AssetImage(imagePath),
-            ),
+          const SizedBox(width: 20),
+          CircleAvatar(
+            radius: 17.5,
+            backgroundImage: AssetImage(imagePath),
           ),
+          const SizedBox(width: 15),
           Text(
             name,
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
           ),
         ],
       ),

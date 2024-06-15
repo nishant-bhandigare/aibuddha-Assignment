@@ -2,14 +2,17 @@ import 'package:aibuddha_assignment/models/deal_model.dart';
 import 'package:flutter/material.dart';
 
 class DealElement extends StatelessWidget {
-  const DealElement({super.key, required this.dealItem,});
+  const DealElement({
+    super.key,
+    required this.dealItem,
+  });
 
   final Deal dealItem;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width*0.43,
+      width: MediaQuery.of(context).size.width * 0.43,
       height: 251,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,9 +39,15 @@ class DealElement extends StatelessWidget {
           ),
 
           // const SizedBox(height: 4),
-          Text(dealItem.title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+          Text(
+            dealItem.title,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          ),
           // const SizedBox(height: 3),
-          Text("Under Rs. ${dealItem.amount}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          Text(
+            "Under Rs. ${dealItem.amount}",
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
         ],
       ),
     );

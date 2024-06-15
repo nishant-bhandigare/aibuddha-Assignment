@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class ProductItem {
   String productName;
   String brandName;
@@ -5,6 +7,8 @@ class ProductItem {
   int newPrice;
   int discount;
   List<String> imagePaths;
+  List<Color> colours;
+  List<String> sizes;
 
   ProductItem({
     required this.productName,
@@ -13,6 +17,8 @@ class ProductItem {
     required this.newPrice,
     required this.discount,
     required this.imagePaths,
+    required this.colours,
+    required this.sizes,
   });
 
   double calculateDiscountPercentage() {

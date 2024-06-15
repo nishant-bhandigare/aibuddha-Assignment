@@ -9,10 +9,12 @@ class OurCollectionsCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: const Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 "Our Collection",
@@ -21,11 +23,10 @@ class OurCollectionsCard extends StatelessWidget{
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
             ],
           ),
         ),
-        ...products.map((product) => Product(product: product)).toList(),
+        ...products.map((product) => Product(product: product)),
       ],
     );
   }

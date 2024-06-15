@@ -1,4 +1,4 @@
-import 'package:aibuddha_assignment/components/carousel_element.dart';
+import 'package:aibuddha_assignment/components/home_carousel.dart';
 import 'package:aibuddha_assignment/components/categories_header.dart';
 import 'package:aibuddha_assignment/components/deals_card.dart';
 import 'package:aibuddha_assignment/components/our_collections_card.dart';
@@ -16,12 +16,12 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 35),
+            SizedBox(height: 40),
             ProfileHeader(name: "Anne Doe", imagePath: "assets/images/profile.jpg"),
             SizedBox(height: 22),
             CategoriesHeader(),
             SizedBox(height: 30),
-            CarouselElement(),
+            HomeCarousel(),
             SizedBox(height: 30),
             TrendingOffersCard(),
             SizedBox(height: 30),

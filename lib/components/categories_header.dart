@@ -6,14 +6,13 @@ class CategoriesHeader extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-      width: MediaQuery.of(context).size.width,
+    return const SizedBox(
       height: 90,
-      child: const SingleChildScrollView(
+      child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
+            SizedBox(width: 20),
             CategoryElement(
               category: "Categories",
               imagePath: 'assets/icons/menu.png',
@@ -38,6 +37,7 @@ class CategoriesHeader extends StatelessWidget{
               category: "Western Wear",
               imagePath: 'assets/images/western_wear.jpg',
             ),
+            SizedBox(width: 22),
           ],
         ),
       ),

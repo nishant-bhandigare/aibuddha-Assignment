@@ -9,6 +9,7 @@ class PincodeInput extends StatefulWidget {
 
 class _PincodeInputState extends State<PincodeInput> {
   final TextEditingController pincodeController = TextEditingController();
+  Color themeColour = const Color.fromARGB(255, 34, 50, 99);
 
   String? validatePincode(String value) {
     if (value.isEmpty) {
@@ -27,19 +28,18 @@ class _PincodeInputState extends State<PincodeInput> {
     String pincode = pincodeController.text;
     String? error = validatePincode(pincode);
     if (error != null) {
-      // Show dialog box with error message
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Invalid Pincode'),
+            title: const Text('Invalid Pincode'),
             content: Text(error),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(); // Close the dialog
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -49,6 +49,7 @@ class _PincodeInputState extends State<PincodeInput> {
       // Perform action for valid pincode
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +65,10 @@ class _PincodeInputState extends State<PincodeInput> {
           ),
           const SizedBox(height: 7),
           Container(
-            width: 276,
+            width: MediaQuery.of(context).size.width*0.67,
             height: 46,
             decoration: BoxDecoration(
-              border: Border.all(),
+              border: Border.all(color: themeColour),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(

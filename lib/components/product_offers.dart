@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProductOffers extends StatelessWidget{
+  const ProductOffers({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +14,7 @@ class ProductOffers extends StatelessWidget{
           Text("Best Offers",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
         SizedBox(height: 20),
-          Row(
+          Wrap(
             children: [
               Text("Special offer get 25% off",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
@@ -21,7 +23,7 @@ class ProductOffers extends StatelessWidget{
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.blue)),
             ],
           ),
-          Row(
+          Wrap(
             children: [
               Text("Bank offer get 30% off on Axis Bank Credit card",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
@@ -30,7 +32,7 @@ class ProductOffers extends StatelessWidget{
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.blue)),
             ],
           ),
-          Row(
+          Wrap(
             children: [
               Text("Special offer get 25% off",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),

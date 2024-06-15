@@ -2,9 +2,8 @@ import 'package:aibuddha_assignment/components/deal_element.dart';
 import 'package:aibuddha_assignment/data/deals_data.dart';
 import 'package:flutter/material.dart';
 
-class DealsCard extends StatelessWidget{
+class DealsCard extends StatelessWidget {
   const DealsCard({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +14,10 @@ class DealsCard extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text("Deals Of  The Day",
-              style:
-              TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+          const Text(
+            "Deals Of  The Day",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -44,5 +44,4 @@ class DealsCard extends StatelessWidget{
       ),
     );
   }
-
 }

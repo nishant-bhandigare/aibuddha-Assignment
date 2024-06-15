@@ -8,70 +8,91 @@ class FAQSection extends StatefulWidget {
 }
 
 class _FAQSectionState extends State<FAQSection> {
-  final List<ExpansionPanelItem> _expansionPanelItems = [
-    ExpansionPanelItem(
-      headerText: 'Product Details',
-      bodyText: 'Information about the product.',
-    ),
-    ExpansionPanelItem(
-      headerText: 'Specification',
-      bodyText: 'Detailed specifications of the product.',
-    ),
-    ExpansionPanelItem(
-      headerText: 'Ratings & Reviews',
-      bodyText: 'Customer ratings and reviews.',
-    ),
-    ExpansionPanelItem(
-      headerText: 'How this was made',
-      bodyText: 'Description of the manufacturing process.',
-    ),
-    ExpansionPanelItem(
-      headerText: 'Manufacturing Information',
-      bodyText: 'Details about the manufacturing of the product.',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      elevation: 1,
-      expandedHeaderPadding: const EdgeInsets.all(12),
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _expansionPanelItems[index].isExpanded = !isExpanded;
-        });
+    final faqs = [
+      {
+        'question': 'Product Details',
+        'answer': 'Information about the product'
       },
-      children: _expansionPanelItems.map<ExpansionPanel>((item) {
-        return ExpansionPanel(
-          backgroundColor: Colors.white,
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(
-                item.headerText,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-            );
-          },
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(item.bodyText),
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
+      {
+        'question': 'Specification',
+        'answer': 'Detailed specifications of the product.'
+      },
+      {
+        'question': 'Ratings & Reviews',
+        'answer': 'Customer ratings and reviews.'
+      },
+      {
+        'question': 'How this was made',
+        'answer': 'Description of the manufacturing process.'
+      },
+      {
+        'question': 'Manufacturing Information',
+        'answer': 'Details about the manufacturing of the product.'
+      },
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          for (var i = 0; i < faqs.length; i++) ...[
+            FAQItem(
+              question: faqs[i]['question']!,
+              answer: faqs[i]['answer']!,
+            ),
+            const Divider(
+              height: 1,
+              indent: 20,
+              endIndent: 20,
+              color: Color.fromARGB(255, 234, 234, 234),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }
 
-class ExpansionPanelItem {
-  String headerText;
-  String bodyText;
-  bool isExpanded;
+class FAQItem extends StatelessWidget {
+  final String question;
+  final String answer;
 
-  ExpansionPanelItem({
-    required this.headerText,
-    required this.bodyText,
-    this.isExpanded = false,
+  const FAQItem({
+    super.key,
+    required this.question,
+    required this.answer,
   });
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        dividerColor: Colors.transparent,
+      ),
+      child: ExpansionTile(
+        title: Text(
+          question,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              answer,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
