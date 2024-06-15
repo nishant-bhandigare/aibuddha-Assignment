@@ -60,10 +60,10 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
     
 ## Dependencies
 
-- **carousel_indicator**: ^1.0.0
-- **carousel_slider**: ^4.0.0
-- **flutter**: ^2.0.0
-- **font_awesome_flutter**: ^9.0.0
+- smooth_page_indicator: ^1.1.0
+- font_awesome_flutter: ^10.7.0
+- carousel_indicator: ^1.0.6
+- carousel_slider: ^4.2.1
 
 ## Acknowledgements
 
