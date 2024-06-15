@@ -1,16 +1,67 @@
-# aibuddha_assignment
 
-A new Flutter project.
+# E-Commerce Application
 
-## Getting Started
+This is a Flutter-based e-commerce application designed to provide a seamless shopping experience. The app features product listings, a carousel for promotions, pincode validation for delivery, and an FAQ section among other functionalities.
 
-This project is a starting point for a Flutter application.
+## Table of Contents
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Dependencies](#dependencies)
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Product Listings**: Browse a variety of products with details.
+- **Promotional Carousel**: View promotional offers through a carousel slider with indicator.
+- **Pincode Validation**: Enter and validate pincode for delivery.
+- **FAQ Section**: Find answers to common questions with an expandable FAQ section.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+### Login Screen
+![Login Screen](assets/screenshots/AuthScreen.png)
+
+### Home Screen
+![Home Screen](assets/screenshots/home1.png)
+![Home Screen](assets/screenshots/home2.png)
+![Home Screen](assets/screenshots/home3.png)
+
+### Product Details
+![Product Details](assets/screenshots/product_details_1.png)
+![Product Details](assets/screenshots/product_details_2.png)
+![Product Details](assets/screenshots/product_details_3.png)
+
+
+## Installation
+
+**Step 1: Clone the repository:**
+   ```sh
+   https://github.com/nishant-bhandigare/aibuddha-Assignment.git
+   ```
+
+**Step 2: Navigate to the project directory:**
+   ```sh
+   cd aibuddha-Assignment
+   ```
+
+**Step 3: Install dependencies:**
+   ```sh
+   flutter pub get
+   ```
+
+**Step 4: Run the app:**
+   ```sh
+   flutter run
+   ```
+    
+## Dependencies
+
+- **carousel_indicator**: ^1.0.0
+- **carousel_slider**: ^4.0.0
+- **flutter**: ^2.0.0
+- **font_awesome_flutter**: ^9.0.0
+
+## Acknowledgements
+
+ - Thanks to the Flutter community for their support and contributions.
+
