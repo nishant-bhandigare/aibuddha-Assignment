@@ -19,17 +19,17 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
 ## Screenshots
 
 ### Login Screen
-![Login Screen](assets/screenshots/AuthScreen.png)
+![Login Screen](assets/screenshots/AuthScreen.jpg)
 
 ### Home Screen
-![Home Screen](assets/screenshots/home1.png)
-![Home Screen](assets/screenshots/home2.png)
-![Home Screen](assets/screenshots/home3.png)
+![Home Screen](assets/screenshots/home1.jpg)
+![Home Screen](assets/screenshots/home2.jpg)
+![Home Screen](assets/screenshots/home3.jpg)
 
 ### Product Details
-![Product Details](assets/screenshots/product_details_1.png)
-![Product Details](assets/screenshots/product_details_2.png)
-![Product Details](assets/screenshots/product_details_3.png)
+![Product Details](assets/screenshots/product_details_1.jpg)
+![Product Details](assets/screenshots/product_details_2.jpg)
+![Product Details](assets/screenshots/product_details_3.jpg)
 
 
 ## Installation
