@@ -19,7 +19,7 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
 ## Screenshots
 
 ### Login Screen
-![Login Screen](assets/screenshots/AuthScreen.jpg)
+![Login Screen]<img src="assets/screenshots/AuthScreen.jpg" width="300">
 
 ### Home Screen
 ![Home Screen](assets/screenshots/home1.jpg)
