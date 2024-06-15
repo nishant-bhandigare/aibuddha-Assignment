@@ -18,6 +18,12 @@ This is a Flutter-based e-commerce application designed to provide a seamless sh
 
 ## Screenshots
 
+<style>
+        img{
+            display: inline;
+        }
+ </style>
+    
 ### Login Screen
 <img src="assets/screenshots/AuthScreen.jpg" width="300">
 
