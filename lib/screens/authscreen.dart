@@ -4,6 +4,11 @@ import 'package:aibuddha_assignment/components/login_button.dart';
 import 'package:aibuddha_assignment/components/my_textfield.dart';
 import 'package:aibuddha_assignment/components/remember_me.dart';
 import 'package:aibuddha_assignment/components/square_tile.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:aibuddha_assignment/controllers/auth_controller.dart';
+
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -13,33 +18,105 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+
   final TextEditingController emailPasswordController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthController authController = Get.put(AuthController());
 
   bool showError = false;
+  String errorMessage = "";
 
   // Regular expression for validating email/phone number
   final RegExp emailPhoneRegex =
-  RegExp(r"(^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$)|(^[0-9]{10}$)");
+      RegExp(r"(^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$)|(^[0-9]{10}$)");
 
   // Regular expression for validating password
   final RegExp passwordRegex =
-  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
-  void signUserIn(BuildContext context) {
+  Future<void> signUserIn(BuildContext context) async {
     setState(() {
-      if (emailPhoneRegex.hasMatch(emailPasswordController.text) &&
-          passwordRegex.hasMatch(passwordController.text)) {
-        showError = false;
-        Navigator.of(context).pop();
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Tabs()),
-        );
-      } else {
-        showError = true;
-      }
+      showError = false;
+      errorMessage = '';
     });
+
+    final dio = Dio();
+
+    if (emailPhoneRegex.hasMatch(emailPasswordController.text) &&
+        passwordRegex.hasMatch(passwordController.text)) {
+      try {
+        final response = await dio.post(
+          'http://localhost:8080/login',
+          data: {
+            'email': emailPasswordController.text,
+            'password': passwordController.text,
+          },
+        );
+
+        if (response.statusCode == 200) {
+          final Map<String, dynamic> responseBody = response.data;
+
+          if (responseBody['success']) {
+            Fluttertoast.showToast(
+              msg: responseBody['data']['msg'],
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.green,
+              textColor: Colors.white,
+              fontSize: 16.0,
+            );
+
+            authController.setUserName(responseBody['data']['name']);
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const Tabs()),
+            );
+          } else {
+            Fluttertoast.showToast(
+              msg: responseBody['data']['msg'],
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0,
+            );
+          }
+        }
+        else {
+
+          Fluttertoast.showToast(
+            msg: 'Error connecting to server. Please try again later. 1',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        }
+      } catch (e) {
+
+        Fluttertoast.showToast(
+          msg: 'Error connecting to server. Please try again later. 2',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
+    } else {
+      Fluttertoast.showToast(
+          msg: "Wrong email or password format",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
   }
 
   @override
@@ -98,21 +175,23 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
 
-              if(!showError)
-                const SizedBox(height: 52),
+              const SizedBox(height: 52),
 
-              if (showError)
-                Container(
-                  margin: const EdgeInsets.fromLTRB(0, 16, 0, 18),
-                  child: const Text(
-                    'Incorrect Password!',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
+              // if(!showError)
+              //   const SizedBox(height: 52),
+
+              // if (showError)
+              //   Container(
+              //     margin: const EdgeInsets.fromLTRB(0, 16, 0, 18),
+              //     child: const Text(
+              //       'Incorrect Password!',
+              //       style: TextStyle(
+              //         color: Colors.red,
+              //         fontSize: 12,
+              //         fontWeight: FontWeight.w700,
+              //       ),
+              //     ),
+              //   ),
 
               // username textfield
               MyTextField(
@@ -132,7 +211,6 @@ class _AuthScreenState extends State<AuthScreen> {
                 icon: Icons.lock_outline,
                 borderColor: showError ? Colors.red : Colors.grey,
               ),
-
 
               const SizedBox(height: 10),
 
