@@ -24,7 +24,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final AuthController authController = Get.put(AuthController());
 
   bool showError = false;
-  String errorMessage = "";
+  final String desitnation = "localhost";
 
   // Regular expression for validating email/phone number
   final RegExp emailPhoneRegex =
@@ -37,7 +37,6 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> signUserIn(BuildContext context) async {
     setState(() {
       showError = false;
-      errorMessage = '';
     });
 
     final dio = Dio();
@@ -46,7 +45,7 @@ class _AuthScreenState extends State<AuthScreen> {
         passwordRegex.hasMatch(passwordController.text)) {
       try {
         final response = await dio.post(
-          'http://localhost:8080/login',
+          'http://$desitnation:8080/login',
           data: {
             'email': emailPasswordController.text,
             'password': passwordController.text,
@@ -55,7 +54,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
         if (response.statusCode == 200) {
           final Map<String, dynamic> responseBody = response.data;
-
           if (responseBody['success']) {
             Fluttertoast.showToast(
               msg: responseBody['data']['msg'],
@@ -84,9 +82,8 @@ class _AuthScreenState extends State<AuthScreen> {
           }
         }
         else {
-
           Fluttertoast.showToast(
-            msg: 'Error connecting to server. Please try again later. 1',
+            msg: 'Error connecting to server. Please try again later.',
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
@@ -96,9 +93,8 @@ class _AuthScreenState extends State<AuthScreen> {
           );
         }
       } catch (e) {
-
         Fluttertoast.showToast(
-          msg: 'Error connecting to server. Please try again later. 2',
+          msg: 'Error connecting to server. Please try again later.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -177,28 +173,13 @@ class _AuthScreenState extends State<AuthScreen> {
 
               const SizedBox(height: 52),
 
-              // if(!showError)
-              //   const SizedBox(height: 52),
-
-              // if (showError)
-              //   Container(
-              //     margin: const EdgeInsets.fromLTRB(0, 16, 0, 18),
-              //     child: const Text(
-              //       'Incorrect Password!',
-              //       style: TextStyle(
-              //         color: Colors.red,
-              //         fontSize: 12,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //   ),
-
               // username textfield
               MyTextField(
                 controller: emailPasswordController,
                 hintText: 'Your Email / Phone Number',
-                obscureText: false,
                 icon: Icons.account_circle_outlined,
+                isPassword: false,
+                borderColor: showError ? Colors.red : Colors.grey,
               ),
 
               const SizedBox(height: 5),
@@ -207,8 +188,8 @@ class _AuthScreenState extends State<AuthScreen> {
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
-                obscureText: true,
                 icon: Icons.lock_outline,
+                isPassword: true,
                 borderColor: showError ? Colors.red : Colors.grey,
               ),
 
